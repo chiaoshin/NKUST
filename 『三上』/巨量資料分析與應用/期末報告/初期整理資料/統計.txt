@@ -1,0 +1,22 @@
+val xRDD=sc.makeRDD(1 to 100)
+val yRDD=xRDD.sample(false,0.1)
+
+yRDD.foreach(println)
+yRDD.collect
+
+val y2RDD=xRDD.randomSplit(Array(0.7,0.3))
+y2RDD(0).count
+y2RDD(1).count
+y2RDD(0).collect
+y2RDD(1).collect
+
+val x3RDD=sc.makeRDD(1 to 5)
+val y3RDD=sc.makeRDD(4 to 8)
+val z3RDD=x3RDD.union(y3RDD)
+val w3RDD=x3RDD ++ y3RDD
+
+val z3RDD = x3RDD.intersection(y3RDD)
+
+val x4RDD = sc.makeRDD(Array("老師","學生","家長","教育部長"))
+val y4RDD = x4RDD.zipWithIndex
+y4RDD.map(x=>(x._2,x._1)).foreach(println)
