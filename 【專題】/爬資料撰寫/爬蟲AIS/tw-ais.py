@@ -34,8 +34,8 @@ result = {
 }
 
 for feature in json_data["features"]:
-    for key, value in feature["properties"].items():
-        if(feature["Ship_and_Cargo_Type"] == 80):
+    if(feature["properties"]["Ship_and_Cargo_Type"] == 80):
+        for key, value in feature["properties"].items():
             result[key].append(value)
 
 df = pd.read_json(json.dumps(result))
